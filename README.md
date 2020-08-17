@@ -1,8 +1,8 @@
 # Sorting-Algorithms
 
-This module contains some prominent sorting algorithms \
+This module contains some prominent sorting algorithms 
 
-The information for the various sorting techniques can be found in the following sites:\
+The information for the various sorting techniques can be found in the following sites:
 
 ## Simple Sorting Algorithms
 
