@@ -16,4 +16,4 @@ Selection Sort - https://www.geeksforgeeks.org/selection-sort/
 
 Quick Sort - https://www.geeksforgeeks.org/quick-sort/
 
-Merge Sort
+Merge Sort - https://www.geeksforgeeks.org/merge-sort/
