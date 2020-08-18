@@ -106,9 +106,14 @@ def quickSort(array, low=0, high=False):
 # Function to merge the given left and right parts
 
 
-def merge(array, left, right):
+def merge(array, low, mid, high):
+    # Making the left and right parts
+    left = array[low:mid]
+    right = array[mid:high+1]
+
     # Merging the left and right parts into a sorted array
-    x = i = j = 0
+    x = low
+    i = j = 0
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
             array[x] = left[i]
@@ -132,29 +137,26 @@ def merge(array, left, right):
 # Merge Sort Main
 
 
-def mergeSort(array, recursion=False):
-    '''DO NOT pass the recursion argument while calling the function to sort.
+def mergeSort(array, low=0, high=0, recursion=False):
+    '''DO NOT pass the low, high or recursion argument while calling the function to sort.
     Pass ONLY the array'''
 
-    # Making a copy of the array on the first call by user
+    # Making a copy of the array on the first call by user, and setting high = last index = len(array)-1
     if not(recursion):
         array = array[:]
+        high = len(array) - 1
 
-    # Array is divided and then merged only if its length > 1
-    if len(array) > 1:
+    # Concerned part of array is divided and then merged only if its length > 1
+    if low < high:
         # Getting position of middle element
-        mid = len(array) // 2
-
-        # Defining left and right parts
-        left = array[:mid]
-        right = array[mid:]
+        mid = (low + high + 1) // 2
 
         # Calling the mergeSort function for left and right parts
-        mergeSort(left, True)
-        mergeSort(right, True)
+        mergeSort(array, low, mid-1, True)
+        mergeSort(array, mid, high, True)
 
         # Merging the left and right parts
-        merge(array, left, right)
+        merge(array, low, mid, high)
 
     return array
 
