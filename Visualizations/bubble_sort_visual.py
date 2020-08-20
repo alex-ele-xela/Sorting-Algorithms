@@ -37,6 +37,7 @@ def bubbleSort(array):
             # Yielding values (bool = if the original array is sorted, 1st index being compared, 2nd index being compared, bool = if the two are changed, value of outer array)
             yield (checkSorted(sortedArray), j, j+1, change, i)
 
+
 # Stores the generator function which provides the next array
 getArray = bubbleSort(array)
 
@@ -53,21 +54,23 @@ class Box():
             self.xSpace = 15
         else:
             self.xSpace = 21
-    
-    def draw(self, window):
-        pygame.draw.rect(window, (255,255,255), (self.x, self.y, self.width, self.height))
-        pygame.draw.rect(window, (150, 150, 150), (self.x, self.y, self.width, self.height), 5)
 
-        number = arial.render(str(self.num), True, (0,0,0))
+    def draw(self, window):
+        pygame.draw.rect(window, (255, 255, 255),
+                         (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(window, (150, 150, 150),
+                         (self.x, self.y, self.width, self.height), 5)
+
+        number = arial.render(str(self.num), True, (0, 0, 0))
         window.blit(number, (self.x + self.xSpace, self.y + 16))
 
 
 class Dot():
     def __init__(self, x):
         self.x = x
-    
+
     def draw(self, window):
-        pygame.draw.circle(window, (255,0,0), (self.x, 200), 6)
+        pygame.draw.circle(window, (255, 0, 0), (self.x, 200), 6)
 
 
 arrayGUI = []
@@ -81,7 +84,7 @@ for i in range(10):
 
 
 def redrawWindow():
-    window.fill((255,255,255))
+    window.fill((255, 255, 255))
 
     for i in range(10):
         arrayGUI[i].draw(window)
@@ -89,7 +92,7 @@ def redrawWindow():
     if not(isSorted):
         for i in range(len(dots)):
             dots[i].draw(window)
-    
+
     pygame.display.update()
 
 
@@ -112,11 +115,11 @@ while run:
             dots.append(Dot(arrayGUI[sortedSide+1].x + 35))
 
         finalPos = arrayGUI[j].x
-    
+
     if changing:
         timeDelay = 100
 
-        if arrayGUI[i].x < finalPos :
+        if arrayGUI[i].x < finalPos:
             arrayGUI[i].x += 5
             arrayGUI[j].x -= 5
         else:
@@ -124,8 +127,6 @@ while run:
             changing = False
 
             arrayGUI[i], arrayGUI[j] = arrayGUI[j], arrayGUI[i]
-
-
 
     for event in pygame.event.get():
         # Closing the window
